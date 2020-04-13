@@ -3,7 +3,7 @@
 
 ## Para rodar o código:
 
-### Windows:
+### Windows(powershell):
 ```
 C:\Diretório> javac Maingame.java
 C:\Diretório> java Maingame
