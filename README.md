@@ -8,7 +8,7 @@
 C:\Diretório> javac Maingame.java
 C:\Diretório> java Maingame
 ```
-###Linux/Mac:
+### Linux/Mac:
 ```
 :~/Diretório$ javac Maingame.java
 :~/Diretório$ java Maingame
