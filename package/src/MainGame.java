@@ -10,6 +10,7 @@ public class MainGame{
         String opt[] = {"inventário", "status", "menu"};
         boolean choosing = false;
         int choice = 0;
+        String chc;
 
         System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
         System.out.println("Sua Jornada começa aqui!");
@@ -41,8 +42,14 @@ public class MainGame{
         String start[] = {"Observar", "conversar", "usar", "sair"};
         while(choosing){
             loop.Choice(start, true);
-            System.out.print("[5] - op��es\n\n: ");
-            choice = keyboard.nextInt();
+            System.out.print("[5] - opções\n\n: ");
+            chc = keyboard.next();
+            try{
+                choice = Integer.parseInt(chc);
+            }catch(NumberFormatException e){
+                System.out.println("Digite um numero!");
+                continue;
+            }
             switch(choice){
                 case 1:
                     String objects[] = {"Armadura de Ferro", "Espada"};
