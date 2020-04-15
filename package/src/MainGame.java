@@ -41,7 +41,7 @@ public class MainGame{
         String start[] = {"Observar", "conversar", "usar", "sair"};
         while(choosing){
             loop.Choice(start, true);
-            System.out.print("5 - opÃ§Ãµes\n\n: ");
+            System.out.print("[5] - opções\n\n: ");
             choice = keyboard.nextInt();
             switch(choice){
                 case 1:
