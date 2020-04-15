@@ -26,7 +26,7 @@ public class MainGame{
         t.Sleep(2);
         System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
         System.out.println("A sua cidade natal foi atacada, mas você e sua família sobreviveram.");
-        System.out.println("Se passaram vários anos e agora você está disposto a fazer vingança às famìlias mortas daquele dia.");
+        System.out.println("Se passaram v�rios anos e agora voc� está disposto a fazer vingança às famìlias mortas daquele dia.");
         System.out.println("Você se dispede de todos e começa a sua jornada.");
         System.out.println("________________________________________________________________________________");
         System.out.println("   //\\\\          ||  //==\\\\  ||==\\\\  ||\\\\   ||    //\\\\    ||===\\\\    //\\\\   ");
