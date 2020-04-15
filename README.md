@@ -3,6 +3,11 @@
 
 ## Para rodar o código:
 
+### No Eclipse:
+
+Simplesmente vá em: **File > Open Projects from File System** clique em **Directory...**
+e vá até a pasta **package/**. Depois é só clicar em **Finish**.
+
 ### Windows(powershell):
 ```
 C:\Diretório> javac Maingame.java
