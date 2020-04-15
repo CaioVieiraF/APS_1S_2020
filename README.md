@@ -9,12 +9,10 @@ Simplesmente vá em: **File > Open Projects from File System** clique em **Direc
 e vá até a pasta **package/**. Depois é só clicar em **Finish**.
 
 ### Windows(powershell):
-```
-C:\Diretório> javac Maingame.java
-C:\Diretório> java Maingame
-```
+
+Vá para a pasta APS_1S_2020\\package e clique-duplo no arquivo ```game.jar```
+
 ### Linux/Mac:
 ```
-:~/Diretório$ javac Maingame.java
-:~/Diretório$ java Maingame
+:~/.../APS_1S_2020/package$ ./run.sh
 ```
