@@ -7,7 +7,7 @@ public class MainGame{
         Scanner keyboard = new Scanner(System.in);
         GameLoop loop = new GameLoop();
         Player.life = 50;
-        String opt[] = {"inventÃ¡rio", "status", "menu"};
+        String opt[] = {"inventário", "status", "menu"};
         boolean choosing = false;
         int choice = 0;
         String chc;
@@ -17,14 +17,15 @@ public class MainGame{
         t.Sleep(1);
         System.out.print("Digite seu nome: ");
         Player.name = keyboard.next();
-        System.out.println("OlÃ¡ "+Player.name+", bem vindo ao jogo!");
+        System.out.println("Olá " + Player.name + ", bem vindo ao jogo!");
         t.Sleep(1);
-        System.out.println("VocÃª comeÃ§a com "+Player.life+" de vida");
+        System.out.println("Você começa com " + Player.life + " de vida");
         t.Sleep(1);
-        System.out.println("E vocÃª tem "+Player.slot.length+" espaÃ§os no seu inventÃ¡rio.");
+        System.out.println("E você tem " + Player.slot.length + " espaços no seu inventario.");
         t.Sleep(1);
         System.out.println("Vamos comeÃ§ar!");
         t.Sleep(2);
+        System.out.println("");
         System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
         System.out.println("A sua cidade natal foi atacada, mas vocÃª e sua famÃ­lia sobreviveram.");
         System.out.println("Se passaram vários anos e agora você estÃ¡ disposto a fazer vinganÃ§a Ã s famÃ¬lias mortas daquele dia.");
@@ -37,13 +38,15 @@ public class MainGame{
         System.out.println("--------------------------------------------------------------------------------");
         System.out.println("");
         System.out.println("");
+        
 
         choosing = true;
         String start[] = {"Observar", "conversar", "usar", "sair"};
         while(choosing){
             loop.Choice(start, true);
-            System.out.print("[5] - opÃ§Ãµes\n\n: ");
+            System.out.print("[5] - opções \n\n>> ");
             chc = keyboard.next();
+            System.out.println();
             try{
                 choice = Integer.parseInt(chc);
             }catch(NumberFormatException e){

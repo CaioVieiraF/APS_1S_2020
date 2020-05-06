@@ -7,7 +7,7 @@ public class GameLoop{
         if(deco){
             System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
         }
-        for(int i=1; i<=op.length; i++){
+        for(int i = 1; i <= op.length; i++){
             System.out.println("[" + i +"]"+" - "+op[i-1]);
         }
 

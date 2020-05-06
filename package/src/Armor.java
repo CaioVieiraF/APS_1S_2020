@@ -4,8 +4,8 @@ public class Armor{
     String type = "Nenhuma";
 
     public void Iron(){
-        resistence = 20;
-        type = "Armadura de Ferro";
+        resistence  = 20;
+        type 		= "Armadura de Ferro";
     }
 
     public int ReciveDamage(int dam){
