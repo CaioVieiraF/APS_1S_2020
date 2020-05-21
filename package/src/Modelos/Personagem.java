@@ -63,6 +63,7 @@ public abstract class Personagem {
 		return vida>0;
 	}
 
+	//Método que mostra itens ao redor do personagem.
 	public void observar(String[] objetos, Utilits ferramenta) {
 		boolean cheio = true;
 		int escolha = ferramenta.menu(Arrays.asList(objetos), "Você olha em volta e vê:", "O que você pega?[0 para voltar]");
@@ -83,10 +84,12 @@ public abstract class Personagem {
 		}
 	}
 
+	//Método que lida com diálogos entre personagens.
 	public void conversar() {
 		System.out.println("Ninguém por perto");
 	}
 	
+	//Método que faz o personagem usar um item do inventário.
 	public void usar(Utilits ferramenta) {
 		int escolha = ferramenta.menu(Arrays.asList(inventario), "Seu inventário:", "O que você quer usar?[0 para voltar]");
 		if(escolha<0) {

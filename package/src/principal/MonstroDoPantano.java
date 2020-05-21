@@ -21,12 +21,14 @@ public class MonstroDoPantano extends Personagem{
 		ataques.put(atqs[0], this.ataque());
 	}
 	
+	@Override
 	public void atacar(int x) {
 		Random rand = new Random();
 		int escolha = rand.nextInt(10);
 		setDano(ataque()-escolha);
 	}
 
+	@Override
 	public int ataque() {
 		setEstamina(getEstamina()-1);
 		return 10;

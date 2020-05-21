@@ -21,6 +21,7 @@ public class Guerreiro extends Personagem{
 		ataques.put(atqs[1], this.ataqueDeEspada());
 	}
 
+	@Override
 	public int ataque() {
 		setEstamina(getEstamina()-1);
 		return 5;

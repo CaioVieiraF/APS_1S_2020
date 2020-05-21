@@ -109,6 +109,7 @@ public class Utilits {
 		return inimigo;
 	}
 
+	//Método que lida com as principais ações do jogo.
 	public boolean menuPrincipal(Personagem player1, Personagem player2) {
 		boolean sair = false;
 		String[] opcoes = {"Observar", "conversar", "usar", "sair"};
