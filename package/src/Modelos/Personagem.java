@@ -1,10 +1,14 @@
 package Modelos;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import jogo.Utilits;
 
@@ -12,10 +16,10 @@ import jogo.Utilits;
 public abstract class Personagem {
 	private int vida, escudo, estamina, mana, dano;
 	private String nome;
-	private Map<String, Integer> map;
+	private Map<String, String> map;
 	private String[] atqs;
 	private String desc;
-	private String[] inventario;
+	private Map<String, Integer> inventario = new HashMap<>();
 	
 	//Método construtor com informações necessárias
 	public Personagem(String nome,int vida, int escudo, int estamina, int mana) {
@@ -27,7 +31,7 @@ public abstract class Personagem {
 	}
 	
 	//Método abstrato de ataque que varia de acordo com o personagem.
-	public abstract int ataque();
+	public abstract void ataque();
 	
 	//Método que retorna uma lista com todos os nomes dos
 	// ataques que estão nas chaves de um dicionário.
@@ -40,10 +44,22 @@ public abstract class Personagem {
 		return atqs;
 	}
 	
-	//Método que define o dano do personagem.
+	//Método que executa a função de ataque escolhida.
 	public void atacar(int opcao) {
 		String nome = atqs[opcao];
-		dano = map.get(nome);
+		Method metodo = null;
+		
+		try {
+			metodo = this.getClass().getMethod(map.get(nome));
+		} catch (NoSuchMethodException | SecurityException e) {
+			e.printStackTrace();
+		}
+		  
+		try {
+			metodo.invoke(this);
+		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void ataque(int dano) {
@@ -65,23 +81,28 @@ public abstract class Personagem {
 
 	//Método que mostra itens ao redor do personagem.
 	public void observar(String[] objetos, Utilits ferramenta) {
-		boolean cheio = true;
 		int escolha = ferramenta.menu(Arrays.asList(objetos), "Você olha em volta e vê:", "O que você pega?[0 para voltar]");
 		if(escolha<0) {
 			return;
 		}
-		for(int i=0; i<inventario.length; i++) {
-			if(inventario[i]==null) {
-				cheio = false;
-				inventario[i] = objetos[escolha];
-				System.out.println(inventario[i]+" foi colocado no inventário");
-				break;
-			}
+		
+		if(inventario.size() == 8) {
+			System.out.println("O inventário está cheio!");
+			return;
 		}
 		
-		if(cheio) {
-			System.out.println("O inventário está cheio!");
+		if(inventario.get(objetos[escolha])!=null) {
+			if(inventario.get(objetos[escolha]) == 5) {
+				inventario.put(objetos[escolha], 1);
+			} else {
+				inventario.replace(objetos[escolha], inventario.get(objetos[escolha]), inventario.get(objetos[escolha])+1);
+			}
+		} else {
+			inventario.put(objetos[escolha], 1);
 		}
+	
+		System.out.println(objetos[escolha]+" foi colocado no inventário");
+	
 	}
 
 	//Método que lida com diálogos entre personagens.
@@ -91,11 +112,24 @@ public abstract class Personagem {
 	
 	//Método que faz o personagem usar um item do inventário.
 	public void usar(Utilits ferramenta) {
-		int escolha = ferramenta.menu(Arrays.asList(inventario), "Seu inventário:", "O que você quer usar?[0 para voltar]");
-		if(escolha<0) {
+		Set<String> keys = inventario.keySet();
+		String[] lista = keys.toArray(new String[keys.size()]);
+		if(inventario.size()==0) {
+			System.out.println("Inventário vazio");
 			return;
 		}
-		System.out.println("Usando "+inventario[escolha]);
+		int escolha = ferramenta.menu(Arrays.asList(lista), "Seu inventário:", "O que você quer usar?[0 para voltar]");
+		if(escolha<0) {
+			return;
+		} else if (lista[escolha]==null) {
+			System.out.println("Valor inválido!");
+			return;
+		}
+		inventario.replace(lista[escolha], inventario.get(lista[escolha]), inventario.get(lista[escolha])-1);
+		System.out.println("Usando "+lista[escolha]);
+		if(inventario.get(lista[escolha]) == 0) {
+			inventario.remove(lista[escolha]);
+		}
 	}
 	
 	//Métodos Getters e Setters.
@@ -147,11 +181,11 @@ public abstract class Personagem {
 		this.nome = nome;
 	}
 
-	public Map<String, Integer> getMap() {
+	public Map<String, String> getMap() {
 		return map;
 	}
 
-	public void setMap(Map<String, Integer> map) {
+	public void setMap(Map<String, String> map) {
 		this.map = map;
 	}
 
@@ -171,11 +205,11 @@ public abstract class Personagem {
 		this.desc = desc;
 	}
 
-	public String[] getInventario() {
+	public Map<String, Integer> getInventario() {
 		return inventario;
 	}
 
-	public void setInventario(String[] inventario) {
+	public void setInventario(Map<String, Integer> inventario) {
 		this.inventario = inventario;
 	}
 	

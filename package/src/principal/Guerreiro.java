@@ -8,28 +8,26 @@ import Modelos.Personagem;
 //classe do nosso personagem.
 public class Guerreiro extends Personagem{
 	
-	Map<String, Integer> ataques = new HashMap<>();
+	Map<String, String> ataques = new HashMap<>();
 	String[] atqs = {"Ataque comum", "Ataque de espada"};
-	String[] inventario = new String[8];
 	
 	public Guerreiro(String nome) {
 		super(nome, 50, 5, 20, 15);
 		setMap(ataques);
 		setAtqs(atqs);
-		setInventario(inventario);
-		ataques.put(atqs[0], this.ataque());
-		ataques.put(atqs[1], this.ataqueDeEspada());
+		ataques.put(atqs[0], "ataque");
+		ataques.put(atqs[1], "ataqueDeEspada");
 	}
 
 	@Override
-	public int ataque() {
+	public void ataque() {
 		setEstamina(getEstamina()-1);
-		return 5;
+		setDano(5);
 	}
 	
-	public int ataqueDeEspada() {
+	public void ataqueDeEspada() {
 		setEstamina(getEstamina()-4);
-		return 8;
+		setDano(8);
 	}
 	
 	public int getAtaque(int i) {

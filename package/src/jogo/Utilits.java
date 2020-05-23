@@ -52,6 +52,7 @@ public class Utilits {
 				escolhendo = true;
 			}
 		}
+		System.out.println();
 		
 		return opcao-1;
 	}
@@ -118,7 +119,7 @@ public class Utilits {
 		
 		switch(escolha) {
 		case 0:
-			player2 = gerarBatalha(20);
+			player2 = gerarBatalha(0);
 			if(player2==null) {
 				player1.observar(ambiente, this);
 			} else {
