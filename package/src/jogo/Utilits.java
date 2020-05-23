@@ -6,6 +6,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 import Modelos.Personagem;
+import principal.LixoSvaldo;
 import principal.MonstroDoPantano;
 
 //classe que lida com eventos gerais decorrentes do jogo.
@@ -76,7 +77,7 @@ public class Utilits {
 			int escolha = menu(player1.getAtaques(), "batalhando!");
 			System.out.println(escolha);
 			player1.atacar(escolha);
-			player2.atacar(escolha);
+			player2.atacar(rand.nextInt(player2.getAtqs().length));
 			System.out.println("Você ataca com "+player1.getDano()+" de dano");
 			System.out.println(player2.getNome()+" ataca com "+player2.getDano()+" de dano");
 			player1.recebeAtaque(player2.getDano());
@@ -102,7 +103,7 @@ public class Utilits {
 	public Personagem gerarBatalha(int chance) {
 		int escolha = rand.nextInt(100);
 		Personagem inimigo = null;
-		Personagem[] inimigos = {new MonstroDoPantano()};
+		Personagem[] inimigos = {new MonstroDoPantano(), new LixoSvaldo()};
 		if(escolha < chance) {
 			escolha = rand.nextInt(inimigos.length);
 			inimigo = inimigos[escolha];
@@ -119,7 +120,7 @@ public class Utilits {
 		
 		switch(escolha) {
 		case 0:
-			player2 = gerarBatalha(0);
+			player2 = gerarBatalha(100);
 			if(player2==null) {
 				player1.observar(ambiente, this);
 			} else {
