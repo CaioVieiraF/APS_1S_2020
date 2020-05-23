@@ -11,7 +11,7 @@ public class MonstroDoPantano extends Personagem{
 
 	Map<String, Integer> ataques = new HashMap<>();
 	String[] atqs = {"Ataque comum"};
-	String desc = "";
+	String desc = "Montro criado pela alta poluição de rios";
 	
 	public MonstroDoPantano() {
 		super("Monstro Do Pantano", 60, 4, 30, 0);
