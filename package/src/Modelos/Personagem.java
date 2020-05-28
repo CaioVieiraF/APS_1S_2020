@@ -20,7 +20,7 @@ public abstract class Personagem {
 	private String[] atqs;
 	private String desc;
 	private Map<String, Integer> inventario = new HashMap<>();
-	
+
 	//Método construtor com informações necessárias
 	public Personagem(String nome,int vida, int escudo, int estamina, int mana) {
 		this.setNome(nome);
@@ -29,10 +29,10 @@ public abstract class Personagem {
 		this.setEstamina(estamina);
 		this.setMana(mana);
 	}
-	
+
 	//Método abstrato de ataque que varia de acordo com o personagem.
 	public abstract void ataque();
-	
+
 	//Método que retorna uma lista com todos os nomes dos
 	// ataques que estão nas chaves de um dicionário.
 	public List<String> getAtaques() {
@@ -43,29 +43,29 @@ public abstract class Personagem {
 		Collections.reverse(atqs);
 		return atqs;
 	}
-	
+
 	//Método que executa a função de ataque escolhida.
 	public void atacar(int opcao) {
 		String nome = atqs[opcao];
 		Method metodo = null;
-		
+
 		try {
 			metodo = this.getClass().getMethod(map.get(nome));
 		} catch (NoSuchMethodException | SecurityException e) {
 			e.printStackTrace();
 		}
-		  
+
 		try {
 			metodo.invoke(this);
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void ataque(int dano) {
 		setDano(dano);
 	}
-	
+
 	//Método que calcula o dano real do ataque e
 	// modifica o valor da vida de acordo.
 	public void recebeAtaque(int dano) {
@@ -73,7 +73,7 @@ public abstract class Personagem {
 		if(dano < 0) dano=0;
 		vida -= dano;
 	}
-	
+
 	//Método que verifica se o personagem está vivo.
 	public boolean estaVivo() {
 		return vida>0;
@@ -85,12 +85,12 @@ public abstract class Personagem {
 		if(escolha<0) {
 			return;
 		}
-		
+
 		if(inventario.size() == 8) {
 			System.out.println("O inventário está cheio!");
 			return;
 		}
-		
+
 		if(inventario.get(objetos[escolha])!=null) {
 			if(inventario.get(objetos[escolha]) == 5) {
 				inventario.put(objetos[escolha], 1);
@@ -100,16 +100,16 @@ public abstract class Personagem {
 		} else {
 			inventario.put(objetos[escolha], 1);
 		}
-	
+
 		System.out.println(objetos[escolha]+" foi colocado no inventário");
-	
+
 	}
 
 	//Método que lida com diálogos entre personagens.
 	public void conversar() {
 		System.out.println("Ninguém por perto");
 	}
-	
+
 	//Método que faz o personagem usar um item do inventário.
 	public void usar(Utilits ferramenta) {
 		Set<String> keys = inventario.keySet();
@@ -131,7 +131,7 @@ public abstract class Personagem {
 			inventario.remove(lista[escolha]);
 		}
 	}
-	
+
 	//Métodos Getters e Setters.
 	public int getVida() {
 		return vida;
@@ -212,5 +212,5 @@ public abstract class Personagem {
 	public void setInventario(Map<String, Integer> inventario) {
 		this.inventario = inventario;
 	}
-	
+
 }

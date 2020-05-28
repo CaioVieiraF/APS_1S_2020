@@ -7,10 +7,10 @@ import Modelos.Personagem;
 
 //classe do nosso personagem.
 public class Guerreiro extends Personagem{
-	
+
 	Map<String, String> ataques = new HashMap<>();
 	String[] atqs = {"Ataque comum", "Ataque de espada"};
-	
+
 	public Guerreiro(String nome) {
 		super(nome, 50, 5, 20, 15);
 		setMap(ataques);
@@ -24,12 +24,12 @@ public class Guerreiro extends Personagem{
 		setEstamina(getEstamina()-1);
 		setDano(5);
 	}
-	
+
 	public void ataqueDeEspada() {
 		setEstamina(getEstamina()-4);
 		setDano(8);
 	}
-	
+
 	public int getAtaque(int i) {
 		return 0;
 	}

@@ -6,23 +6,22 @@ import java.util.Random;
 import java.util.Scanner;
 
 import Modelos.Personagem;
-import principal.LixoSvaldo;
-import principal.MonstroDoPantano;
+import inimigos.*;
 
 //classe que lida com eventos gerais decorrentes do jogo.
 public class Utilits {
-	
+
 	//Declaração e inicialização de variáveis.
 	Scanner teclado = new Scanner(System.in);
 	Random rand = new Random();
-	
+
 	//Método construtor.
 	//Sempre que o jogo começar ele vai ser chamado e
 	//a abertura vai aparecer.
 	public Utilits() {
 		abertura();
 	}
-	
+
 	//Método que gera um menu de opções de acordo com
 	// uma lista e um título.
 	public int menu(List<String> opcoes, String tituloSuperior, String tituloInferior) {
@@ -47,43 +46,44 @@ public class Utilits {
 				System.out.println("Digite um número!");
 				escolhendo = true;
 			}
-			
+
 			if(opcao>opcoes.size() || opcao<0) {
 				System.out.println("Valor inválido!");
 				escolhendo = true;
 			}
 		}
 		System.out.println();
-		
+
 		return opcao-1;
 	}
-	
+
 	public int menu(List<String> opcoes, String titulo) {
 		int opcao = menu(opcoes, titulo, "Escolha");
 		return opcao;
 	}
-	
+
 	//A abertura do jogo.
 	public void abertura() {
 		System.out.println("__________________________");
 		System.out.println("Bem vindo ao jogo!");
 	}
-	
+
 	//Método que lida com as batalhas;
 	public String batalha(Personagem player1, Personagem player2) {
 		String vencedor = "Ninguem";
 		boolean batalhando = true;
+		int turno = 1;
 		while(batalhando) {
-			int escolha = menu(player1.getAtaques(), "batalhando!");
-			System.out.println(escolha);
+			int escolha = menu(player1.getAtaques(), "batalhando!\nTurno: " + turno);
 			player1.atacar(escolha);
 			player2.atacar(rand.nextInt(player2.getAtqs().length));
-			System.out.println("Você ataca com "+player1.getDano()+" de dano");
-			System.out.println(player2.getNome()+" ataca com "+player2.getDano()+" de dano");
+			System.out.println("-Você ataca com "+player1.getDano()+" de dano");
+			System.out.println("-"+player2.getNome()+" ataca com "+player2.getDano()+" de dano");
 			player1.recebeAtaque(player2.getDano());
 			player2.recebeAtaque(player1.getDano());
 			System.out.println("Você está com "+player1.getVida()+" de vida");
 			System.out.println(player2.getNome()+" esta com "+player2.getVida()+" de vida");
+			turno++;
 			if(player1.estaVivo() && !player2.estaVivo()) {
 				vencedor = player1.getNome();
 			} else if(!player1.estaVivo() && player2.estaVivo()) {
@@ -92,10 +92,11 @@ public class Utilits {
 				continue;
 			}
 			batalhando = false;
+			turno = 0;
 		}
-		
+
 		return vencedor;
-		
+
 	}
 
 	//Método que decide e gera uma batalha de  um jogador e
@@ -103,7 +104,11 @@ public class Utilits {
 	public Personagem gerarBatalha(int chance) {
 		int escolha = rand.nextInt(100);
 		Personagem inimigo = null;
-		Personagem[] inimigos = {new MonstroDoPantano(), new LixoSvaldo()};
+		Personagem[] inimigos = {
+			new MonstroDoPantano(),
+			new LixoSvaldo(),
+			new Insectoide()
+		};
 		if(escolha < chance) {
 			escolha = rand.nextInt(inimigos.length);
 			inimigo = inimigos[escolha];
@@ -117,7 +122,7 @@ public class Utilits {
 		String[] opcoes = {"Observar", "conversar", "usar", "sair"};
 		int escolha = menu(Arrays.asList(opcoes), "O que você faz?");
 		String[] ambiente = {"Lixeira", "Lata vazia", "Garrafa plástica vazia"};
-		
+
 		switch(escolha) {
 		case 0:
 			player2 = gerarBatalha(100);
