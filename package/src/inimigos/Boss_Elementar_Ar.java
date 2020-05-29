@@ -6,24 +6,23 @@ import java.util.Random;
 
 import Modelos.Personagem;
 
-public class Grinch extends Personagem{
+public class Boss_Elementar_Ar extends Personagem{
 
 	Map<String, String> ataques = new HashMap<>();
-	String[] atqs = {"Ataque comum", "Special atak"};
-	String desc = "Essa pequena criatura é uma das maiores pestes contra a"
-				+ " natureza, por onde passa deixa um caos, sempre atirando lixo "
-				+ "nas pessoas e pregando peças.\r\n"
-				+ "Ataque atirar casca de bananas e jogar lixo.\r\n";
+	String[] atqs = {"Ataque comum", "Special atak", "Special two"};
+	String desc = "";
 	Random rand = new Random();
 
-	public Grinch() {
-		super("Grinch", 10, 3, 5, 10);
+
+	public Boss_Elementar_Ar() {
+		super("Boss aero", 100, 10, 20, 40);
 
 		setDesc(desc);
 		setMap(ataques);
 		setAtqs(atqs);
 		ataques.put(atqs[0], "ataque");
-		ataques.put(atqs[1], "jogar_lixo");
+		ataques.put(atqs[1], "asas_de_prata");
+		ataques.put(atqs[2], "vendaval");
 	}
 
 
@@ -41,10 +40,18 @@ public class Grinch extends Personagem{
 
 	}
 
-	public void jogar_lixo() {
+	public void asas_de_prata () {
 
-		setEstamina(getEstamina()-10);
-		setDano(10);
+		setEstamina(getMana() - 10);
+		setDano(16);
+
+
+	}
+	
+	public void vendaval () {
+
+		setEstamina(getMana() - 15);
+		setDano(19);
 
 
 	}

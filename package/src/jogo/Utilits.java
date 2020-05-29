@@ -107,11 +107,7 @@ public class Utilits {
 		Personagem[] inimigos = {
 			new MonstroDoPantano(),
 			new LixoSvaldo(),
-			new Insectoide(),
-			new Smog(),
-			new Dr_Planeta(),
-			new Plastic_Pig(),
-			new Grinch()
+			new Insectoide()
 			
 		};
 		if(escolha < chance) {
