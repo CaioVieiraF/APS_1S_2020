@@ -80,8 +80,18 @@ public abstract class Personagem {
 	}
 
 	//Método que mostra itens ao redor do personagem.
-	public void observar(String[] objetos, Utilits ferramenta) {
-		int escolha = ferramenta.menu(Arrays.asList(objetos), "Você olha em volta e vê:", "O que você pega?[0 para voltar]");
+	public void observar(Map<String, Integer> ambiente, Utilits ferramenta) {
+		String[] objetos = ambiente.keySet().toArray(new String[ambiente.keySet().size()]);
+		Integer[] quant = ambiente.values().toArray(new Integer[ambiente.keySet().size()]);
+		String[] objetos2 = new String[objetos.length];
+		for (int i = 0; i < objetos2.length ; i++) {
+			if (quant[i] == -1) {
+				objetos2[i] = objetos[i] + " (usar)";
+			} else if(quant[i] != 0) {
+				objetos2[i] = objetos[i] + " (" + quant[i] + ")";
+			}
+		}
+		int escolha = ferramenta.menu(Arrays.asList(objetos2), "Você olha em volta e vê:", "O que você pega?[0 para voltar]");
 		if(escolha<0) {
 			return;
 		}
@@ -91,7 +101,7 @@ public abstract class Personagem {
 			return;
 		}
 
-		if(inventario.get(objetos[escolha])!=null) {
+		if(inventario.get(objetos[escolha]) != null) {
 			if(inventario.get(objetos[escolha]) == 5) {
 				inventario.put(objetos[escolha], 1);
 			} else {
@@ -101,6 +111,7 @@ public abstract class Personagem {
 			inventario.put(objetos[escolha], 1);
 		}
 
+		ambiente.replace(objetos[escolha], quant[escolha], quant[escolha]-1);
 		System.out.println(objetos[escolha]+" foi colocado no inventário");
 
 	}
@@ -114,11 +125,15 @@ public abstract class Personagem {
 	public void usar(Utilits ferramenta) {
 		Set<String> keys = inventario.keySet();
 		String[] lista = keys.toArray(new String[keys.size()]);
+		String[] lista2 = new String[lista.length];
+		for (int i = 0; i < lista.length ; i++) {
+			lista2[i] = lista[i] + " (" + inventario.get(lista[i]) + ")";
+		}
 		if(inventario.size()==0) {
 			System.out.println("Inventário vazio");
 			return;
 		}
-		int escolha = ferramenta.menu(Arrays.asList(lista), "Seu inventário:", "O que você quer usar?[0 para voltar]");
+		int escolha = ferramenta.menu(Arrays.asList(lista2), "Seu inventário:", "O que você quer usar?[0 para voltar]");
 		if(escolha<0) {
 			return;
 		} else if (lista[escolha]==null) {

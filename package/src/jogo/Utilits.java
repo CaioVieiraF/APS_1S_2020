@@ -1,6 +1,6 @@
 package jogo;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
@@ -24,9 +24,15 @@ public class Utilits {
 
 	//Método que gera um menu de opções de acordo com
 	// uma lista e um título.
-	public int menu(List<String> opcoes, String tituloSuperior, String tituloInferior) {
+	public int menu(List<String> opcoes0, String tituloSuperior, String tituloInferior) {
 		boolean escolhendo = true;
 		int opcao = 0;
+		List<String> opcoes = new ArrayList<String>();
+		for (int i = 0; i < opcoes0.size(); i++) {
+			if (opcoes0.get(i) != null) {
+				opcoes.add(opcoes0.get(i));
+			}
+		}
 		while(escolhendo) {
 			escolhendo = false;
 			System.out.println("__________________________");
@@ -116,36 +122,4 @@ public class Utilits {
 		return inimigo;
 	}
 
-	//Método que lida com as principais ações do jogo.
-	public boolean menuPrincipal(Personagem player1, Personagem player2) {
-		boolean sair = false;
-		String[] opcoes = {"Observar", "conversar", "usar", "sair"};
-		int escolha = menu(Arrays.asList(opcoes), "O que você faz?");
-		String[] ambiente = {"Lixeira", "Lata vazia", "Garrafa plástica vazia"};
-
-		switch(escolha) {
-		case 0:
-			player2 = gerarBatalha(100);
-			if(player2==null) {
-				player1.observar(ambiente, this);
-			} else {
-				System.out.println("A pareceu um "+player2.getNome());
-				System.out.println(batalha(player1, player2)+" ganhou!");
-			}
-			break;
-		case 1:
-			player1.conversar();
-			break;
-		case 2:
-			player1.usar(this);
-			break;
-		case 3:
-			System.out.println("Tchau!");
-			sair = true;
-			break;
-		default:
-			System.out.println("Erro");
-		}
-		return sair;
-	}
 }
