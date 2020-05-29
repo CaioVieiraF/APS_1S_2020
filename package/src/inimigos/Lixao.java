@@ -19,7 +19,7 @@ public class Lixao extends Personagem{
 		setMap(ataques);
 		setAtqs(atqs);
 		ataques.put(atqs[0], "ataque");
-		ataques.put(atqs[1], "GolpeDeChorume")
+		ataques.put(atqs[1], "GolpeDeChorume");
 	}
 
 	@Override
