@@ -11,7 +11,8 @@ public class MonstroDoPantano extends Personagem{
 
 	Map<String, String> ataques = new HashMap<>();
 	String[] atqs = {"Ataque comum"};
-	String desc = "";
+	String   desc = "Quando o descarte de lixo se acumula em meio aos rios e lagos,\n"
+				  + " monstros do pântano são criados, possui ataque de gosma e jato de lama.";
 
 	public MonstroDoPantano() {
 		super("Monstro Do Pantano", 40, 4, 15, 0);
