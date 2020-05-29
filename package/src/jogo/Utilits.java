@@ -113,7 +113,8 @@ public class Utilits {
 		Personagem[] inimigos = {
 			new MonstroDoPantano(),
 			new LixoSvaldo(),
-			new Insectoide()
+			new Insectoide(),
+			new Pollution()
 		};
 		if(escolha < chance) {
 			escolha = rand.nextInt(inimigos.length);
