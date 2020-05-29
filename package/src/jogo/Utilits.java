@@ -110,7 +110,8 @@ public class Utilits {
 			new Insectoide(),
 			new Smog(),
 			new Dr_Planeta(),
-			new Plastic_Pig()
+			new Plastic_Pig(),
+			new Grinch()
 			
 		};
 		if(escolha < chance) {
