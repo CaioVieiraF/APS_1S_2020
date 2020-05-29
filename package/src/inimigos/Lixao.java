@@ -10,7 +10,7 @@ import Modelos.Personagem;
 public class Lixao extends Personagem{
 
 	Map<String, String> ataques = new HashMap<>();
-	String[] atqs = {"Ataque comum","Ataque de xorume"};
+	String[] atqs = {"Ataque comum","Ataque de chorume"};
 	String desc = "";
 
 	public Lixao() {
@@ -19,7 +19,7 @@ public class Lixao extends Personagem{
 		setMap(ataques);
 		setAtqs(atqs);
 		ataques.put(atqs[0], "ataque");
-		ataques.put(atqs[1], "GoldeDeXorume")
+		ataques.put(atqs[1], "GolpeDeChorume")
 	}
 
 	@Override
@@ -36,7 +36,7 @@ public class Lixao extends Personagem{
 		setDano(10-escolha);
 	}
 
-	public void GolpeDeXorume(){
+	public void GolpeDeChorume(){
 		setEstamina(getEstamina()-15);
 		setDano(15);
 	}

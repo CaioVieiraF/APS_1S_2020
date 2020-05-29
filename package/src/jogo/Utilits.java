@@ -114,8 +114,7 @@ public class Utilits {
 			new MonstroDoPantano(),
 			new LixoSvaldo(),
 			new Insectoide(),
-			new Pollution(),
-			new Lixao()
+		
 		};
 		if(escolha < chance) {
 			escolha = rand.nextInt(inimigos.length);
