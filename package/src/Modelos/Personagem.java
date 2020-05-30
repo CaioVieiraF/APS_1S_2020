@@ -80,40 +80,51 @@ public abstract class Personagem {
 	}
 
 	//Método que mostra itens ao redor do personagem.
-	public void observar(Map<String, Integer> ambiente, Utilits ferramenta) {
-		String[] objetos = ambiente.keySet().toArray(new String[ambiente.keySet().size()]);
-		Integer[] quant = ambiente.values().toArray(new Integer[ambiente.keySet().size()]);
-		String[] objetos2 = new String[objetos.length];
-		for (int i = 0; i < objetos2.length ; i++) {
-			if (quant[i] == -1) {
-				objetos2[i] = objetos[i] + " (usar)";
-			} else if(quant[i] != 0) {
-				objetos2[i] = objetos[i] + " (" + quant[i] + ")";
+	public void observar(String[] objetos, Utilits ferramenta, int[] acoes) {
+
+		int escolha = ferramenta.menu(Arrays.asList(objetos), "Você olha em volta e vê:", "O que você pega?[0 para voltar]");
+		if(escolha < 0) {
+			return;
+		}
+
+		if (acoes[escolha] > 0) {
+			if(inventario.size() == 8) {
+				System.out.println("O inventário está cheio!");
+				return;
 			}
-		}
-		int escolha = ferramenta.menu(Arrays.asList(objetos2), "Você olha em volta e vê:", "O que você pega?[0 para voltar]");
-		if(escolha<0) {
-			return;
-		}
 
-		if(inventario.size() == 8) {
-			System.out.println("O inventário está cheio!");
-			return;
-		}
-
-		if(inventario.get(objetos[escolha]) != null) {
-			if(inventario.get(objetos[escolha]) == 5) {
-				inventario.put(objetos[escolha], 1);
+			if(inventario.get(objetos[escolha]) != null) {
+				if(inventario.get(objetos[escolha]) == 5) {
+					inventario.put(objetos[escolha], 1);
+				} else {
+					inventario.replace(objetos[escolha], inventario.get(objetos[escolha]), inventario.get(objetos[escolha])+1);
+				}
 			} else {
-				inventario.replace(objetos[escolha], inventario.get(objetos[escolha]), inventario.get(objetos[escolha])+1);
+				inventario.put(objetos[escolha], 1);
 			}
-		} else {
-			inventario.put(objetos[escolha], 1);
+			acoes[escolha]--;
+			if (acoes[escolha] == 0) {
+				objetos[escolha] = null;
+				for (int i = 0; i < objetos.length; i++) {
+					if (objetos[i] == null && i != objetos.length-1) {
+						if (objetos[i+1] == null) {
+							break;
+						} else {
+							objetos[i] = objetos[i+1];
+							objetos[i+1] = null;
+							acoes[i] = acoes[i+1];
+							acoes[i+1] = 0;
+						}
+					}
+				}
+			}
+			System.out.println(objetos[escolha]+" foi colocado no inventário");
+		} else if (acoes[escolha] == -1) {
+			String reciclar = usar(new Utilits(), false);
+			if (reciclar != null) {
+				System.out.println(" foi reciclado!");
+			}
 		}
-
-		ambiente.replace(objetos[escolha], quant[escolha], quant[escolha]-1);
-		System.out.println(objetos[escolha]+" foi colocado no inventário");
-
 	}
 
 	//Método que lida com diálogos entre personagens.
@@ -122,7 +133,7 @@ public abstract class Personagem {
 	}
 
 	//Método que faz o personagem usar um item do inventário.
-	public void usar(Utilits ferramenta) {
+	public String usar(Utilits ferramenta, boolean checar) {
 		Set<String> keys = inventario.keySet();
 		String[] lista = keys.toArray(new String[keys.size()]);
 		String[] lista2 = new String[lista.length];
@@ -131,20 +142,29 @@ public abstract class Personagem {
 		}
 		if(inventario.size()==0) {
 			System.out.println("Inventário vazio");
-			return;
+			return null;
 		}
 		int escolha = ferramenta.menu(Arrays.asList(lista2), "Seu inventário:", "O que você quer usar?[0 para voltar]");
 		if(escolha<0) {
-			return;
+			return null;
 		} else if (lista[escolha]==null) {
 			System.out.println("Valor inválido!");
-			return;
+			return null;
 		}
 		inventario.replace(lista[escolha], inventario.get(lista[escolha]), inventario.get(lista[escolha])-1);
-		System.out.println("Usando "+lista[escolha]);
+		if (checar) {
+			System.out.println("Usando "+lista[escolha]);
+		} else {
+			System.out.print(lista[escolha]);
+		}
 		if(inventario.get(lista[escolha]) == 0) {
 			inventario.remove(lista[escolha]);
 		}
+		return lista[escolha];
+	}
+
+	public void usar(Utilits ferramenta) {
+		usar(ferramenta, true);
 	}
 
 	//Métodos Getters e Setters.

@@ -1,7 +1,5 @@
 package jogo;
 
-import java.util.Map;
-import java.util.HashMap;
 import java.util.Arrays;
 import Modelos.Personagem;
 
@@ -11,7 +9,7 @@ public class Eventos {
 	Utilits ferramenta = new Utilits();
 
 	//Método que lida com as principais ações do jogo.
-	public boolean menuPrincipal(Personagem player1, Personagem player2, String[] opcoes, Map<String, Integer> ambiente, int chance) {
+	public boolean menuPrincipal(Personagem player1, Personagem player2, String[] opcoes, String[] ambiente, int[] acoes, int chance) {
 		boolean sair = false;
 		int escolha = ferramenta.menu(Arrays.asList(opcoes), "O que você faz?");
 
@@ -19,7 +17,7 @@ public class Eventos {
 		case 0:
 			player2 = ferramenta.gerarBatalha(chance);
 			if(player2==null) {
-				player1.observar(ambiente, ferramenta);
+				player1.observar(ambiente, ferramenta, acoes);
 			} else {
 				System.out.println("A pareceu um "+player2.getNome());
 				System.out.println(ferramenta.batalha(player1, player2)+" ganhou!");

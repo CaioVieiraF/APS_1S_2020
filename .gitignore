@@ -1,9 +1,5 @@
-
-package/bin/inimigos/Insectoide.class
-package/bin/inimigos/LixoSvaldo.class
+*.class
 package/bin/inimigos/MonstroDoPantano.class
-package/bin/jogo/Eventos.class
 package/bin/jogo/Utilits.class
 package/bin/Modelos/Personagem.class
-package/bin/principal/Guerreiro.class
-package/bin/principal/Main.class
+*.class

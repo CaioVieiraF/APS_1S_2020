@@ -15,13 +15,6 @@ public class Utilits {
 	Scanner teclado = new Scanner(System.in);
 	Random rand = new Random();
 
-	//Método construtor.
-	//Sempre que o jogo começar ele vai ser chamado e
-	//a abertura vai aparecer.
-	public Utilits() {
-		abertura();
-	}
-
 	//Método que gera um menu de opções de acordo com
 	// uma lista e um título.
 	public int menu(List<String> opcoes0, String tituloSuperior, String tituloInferior) {
