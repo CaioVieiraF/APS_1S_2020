@@ -11,7 +11,7 @@ public class Lixao extends Personagem{
 
 	Map<String, String> ataques = new HashMap<>();
 	String[] atqs = {"Ataque comum","Ataque de chorume"};
-	String desc = "";
+	String desc = "Criado do encontro de resto de lixo mal reciclado surge o Lixão.\nSeu maior objetivo é acabar com o mundo com seu gás tóxico: o chorume.";
 
 	public Lixao() {
 		super("Lixao", 20, 5, 10, 15);

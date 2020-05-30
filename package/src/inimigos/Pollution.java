@@ -10,7 +10,7 @@ public class Pollution extends Personagem{
 
 	Map<String, String> ataques = new HashMap<>();
 	String[] atqs = {"Ataque comum", "Golpe Fumaçante"};
-	String desc = "";
+	String desc = "Vindo da poluição eminente de fábricas e automóveis.\nPollution pode trazer graves problemas de respiração devido sua forma gasosa.";
 	Random rand = new Random();
 
 
