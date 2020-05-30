@@ -10,7 +10,9 @@ public class LixoSvaldo extends Personagem{
 
 	Map<String, String> ataques = new HashMap<>();
 	String[] atqs = {"Ataque comum", "Special atak"};
-	String desc = "";
+	String desc = "Sempre que se tem acumulo de lixo em lugares qualquer nascem"
+				+ " pequenos monstros que são denominados Lixosvaldo, ele é feito de"
+				+ " restos orgânicos e outras matérias, porem ele é fraco contra agua.";
 	Random rand = new Random();
 
 
