@@ -183,6 +183,8 @@ public class Main {
 			inimigo1,
 			new Boss_Elementar_Agua()
 			);
+		System.out.println("Logo após derrotar o bos da floresta das conchas nosso \n"
+			+"heroi segue em busca de outro desafio... \n ");
 		reino(
 			player,
 			"cidade de arcadia",
@@ -193,6 +195,9 @@ public class Main {
 			inimigo2,
 			new Boss_Elementar_Ar()
 			);
+		System.out.println("\n Quando finalmente derrota o temivel monstro de arcadia ele \n"
+		+"recebe uma noticia de que tem algo estranho no reino da terra \n"
+		+"então nosso querido heroi segue novamente sua jornada... \n ");
 		reino(
 			player,
 			"Proximidades do pantano sombrio",
@@ -203,6 +208,9 @@ public class Main {
 			inimigo3,
 			new Boss_Elementar_Terra()
 			);
+			System.out.println("\n Depois de uma dificil vitoria nosso heroi continua buscando \n"
+			+"mais poder para derrotar os terriveis monstro da poluição \n"
+			+"Rumo a proxima jornada...");
 		reino(
 			player,
 			"reino solaria",
