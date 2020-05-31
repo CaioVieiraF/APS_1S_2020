@@ -6,24 +6,24 @@ import java.util.Random;
 
 import Modelos.Personagem;
 
-public class LixoSvaldo extends Personagem{
+public class Grinch extends Personagem{
 
 	Map<String, String> ataques = new HashMap<>();
 	String[] atqs = {"Ataque comum", "Special atak"};
-	String desc = "Sempre que se tem acumulo de lixo em lugares qualquer nascem"
-				+ " pequenos monstros que são denominados Lixosvaldo, ele é feito de"
-				+ " restos orgânicos e outras matérias, porem ele é fraco contra agua.";
+	String desc = "Essa pequena criatura é uma das maiores pestes contra a"
+				+ " natureza, por onde passa deixa um caos, sempre atirando lixo "
+				+ "nas pessoas e pregando peças.\r\n"
+				+ "Ataque atirar casca de bananas e jogar lixo.\r\n";
 	Random rand = new Random();
 
-
-	public LixoSvaldo() {
-		super("Lixosvaldo", 30, 7, 10, 25);
+	public Grinch() {
+		super("Grinch", 10, 3, 5, 10);
 
 		setDesc(desc);
 		setMap(ataques);
 		setAtqs(atqs);
 		ataques.put(atqs[0], "ataque");
-		ataques.put(atqs[1], "Chuva_de_lixo");
+		ataques.put(atqs[1], "jogar_lixo");
 	}
 
 
@@ -41,7 +41,7 @@ public class LixoSvaldo extends Personagem{
 
 	}
 
-	public void Chuva_de_lixo() {
+	public void jogar_lixo() {
 
 		setEstamina(getEstamina()-10);
 		setDano(10);

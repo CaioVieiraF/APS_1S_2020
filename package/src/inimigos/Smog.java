@@ -6,24 +6,26 @@ import java.util.Random;
 
 import Modelos.Personagem;
 
-public class LixoSvaldo extends Personagem{
+public class Smog extends Personagem{
 
 	Map<String, String> ataques = new HashMap<>();
 	String[] atqs = {"Ataque comum", "Special atak"};
-	String desc = "Sempre que se tem acumulo de lixo em lugares qualquer nascem"
-				+ " pequenos monstros que são denominados Lixosvaldo, ele é feito de"
-				+ " restos orgânicos e outras matérias, porem ele é fraco contra agua.";
+	String   desc = "Quando as cidades se enchem de veículos as fabricas e as fabricas queimam seus \n"
+				  + " conteúdos químicos, em meio a esse caos nascem as Smog nuvens altamente toxicas que "
+				  + "destroem o CO2\r\n" 
+				  +"Assim tirando o ar de suas vítimas.\r\n"
+				  +"Ataque chuva de ácido e ar sufocante.\r\n";
 	Random rand = new Random();
 
 
-	public LixoSvaldo() {
-		super("Lixosvaldo", 30, 7, 10, 25);
+	public Smog() {
+		super("Smog", 25, 5, 10, 0);
 
 		setDesc(desc);
 		setMap(ataques);
 		setAtqs(atqs);
 		ataques.put(atqs[0], "ataque");
-		ataques.put(atqs[1], "Chuva_de_lixo");
+		ataques.put(atqs[1], "Neblina_de_acido");
 	}
 
 
@@ -41,7 +43,7 @@ public class LixoSvaldo extends Personagem{
 
 	}
 
-	public void Chuva_de_lixo() {
+	public void Neblina_de_acido() {
 
 		setEstamina(getEstamina()-10);
 		setDano(10);
