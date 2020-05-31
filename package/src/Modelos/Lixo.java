@@ -2,13 +2,15 @@ package Modelos;
 
 public abstract class Lixo {
 
-    private String[] objetos;
-    private String tipo;
+    String[] objetos;
+    String tipo;
+    String[] desc;
 
     public Lixo(String tipo){
         this.tipo = tipo;
     }
 
+    //Método que gera os nomes dos residuos de acordo com o tipo de material
     public String[] setNames(boolean setTipo){
         String[] nomes = new String[objetos.length];
         for (int i = 0; i < nomes.length; i++) {
@@ -20,6 +22,8 @@ public abstract class Lixo {
         }
         return nomes;
     }
+
+    //Getters e Setters
     public String[] setNames(){
         String[] nomes = setNames(true);
         return nomes;
@@ -36,6 +40,13 @@ public abstract class Lixo {
     }
     public void setTipo(String tipo){
         this.tipo = tipo;
+    }
+
+    public String[] getDesc(){
+        return this.desc;
+    }
+    public void setDesc(String[] desc){
+        this.desc = desc;
     }
 
 }

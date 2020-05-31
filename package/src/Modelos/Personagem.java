@@ -33,6 +33,36 @@ public abstract class Personagem {
 	//Método abstrato de ataque que varia de acordo com o personagem.
 	public abstract void ataque();
 
+	//Método que retorna informações sobre um personagem
+	public void info(boolean descricao){
+		System.out.println("+----------------");
+		System.out.println("|Nome: "+getNome());
+		System.out.println("|Vida: "+getVida());
+		System.out.println("|Escudo: "+getEscudo());
+		System.out.println("|Estamina: "+getEstamina());
+		System.out.println("|Mana: "+getMana());
+		System.out.println("+----------------");
+		if (descricao) {
+			System.out.println(this.desc);
+		}
+	}
+
+	public void info(){
+		info(false);
+	}
+
+	//Método que atualiza os status de um personagem
+	public void refresh(){
+		if (estaVivo()) {
+			if (getMana() < 0) {
+				setMana(0);
+			}
+			if (getEstamina() < 0) {
+				setEstamina(0);
+			}
+		}
+	}
+
 	//Método que retorna uma lista com todos os nomes dos
 	// ataques que estão nas chaves de um dicionário.
 	public List<String> getAtaques() {
@@ -123,13 +153,24 @@ public abstract class Personagem {
 			String reciclar = usar(new Utilits(), false);
 			if (reciclar != null) {
 				System.out.println(" foi reciclado!");
+				setEstamina(getEstamina()+2);
+				System.out.println("Você ganhou +2 de estamina!");
 			}
 		}
 	}
 
 	//Método que lida com diálogos entre personagens.
-	public void conversar() {
-		System.out.println("Ninguém por perto");
+	public boolean conversar(Npc[] npc, Utilits ferramenta, String[] ambiente, int[] acoes) {
+		String[] pessoas = new String[npc.length];
+		for (int i = 0; i < pessoas.length ; i++) {
+			pessoas[i] = npc[i].getNome();
+		}
+		int escolha = ferramenta.menu(Arrays.asList(pessoas), "Você olha em volta e vê:", "Com quem você fala?[0 para voltar]");
+		if (escolha == -1) {
+			return false;
+		}
+		return npc[escolha].interagir(this, ferramenta, ambiente, acoes);
+
 	}
 
 	//Método que faz o personagem usar um item do inventário.
@@ -165,6 +206,25 @@ public abstract class Personagem {
 
 	public void usar(Utilits ferramenta) {
 		usar(ferramenta, true);
+	}
+
+	//Método que mostra os itens do inventário
+	public void inventário(){
+		Set<String> keys = inventario.keySet();
+		String[] lista = keys.toArray(new String[keys.size()]);
+		String[] lista2 = new String[lista.length];
+		for (int i = 0; i < lista.length ; i++) {
+			lista2[i] = lista[i] + " (" + inventario.get(lista[i]) + ")";
+		}
+		if(inventario.size()==0) {
+			System.out.println("Inventário vazio");
+			return;
+		}
+		System.out.println("+-----------------+");
+		System.out.println("| Seu inventário:");
+		for (int i = 0; i < lista2.length ; i++) {
+			System.out.println("| ["+(i+1)+"] - "+lista2[i]);
+		}
 	}
 
 	//Métodos Getters e Setters.
