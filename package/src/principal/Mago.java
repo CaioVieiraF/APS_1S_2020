@@ -17,7 +17,7 @@ public class Mago extends Personagem{
 		ataques.put(atqs[0], "ataque");
 		ataques.put(atqs[1], "Fire_ball");
 		ataques.put(atqs[2], "Relampago");
-		ataques.put(atqs[3], "Regressão");
+		ataques.put(atqs[3], "Regressï¿½o");
 	}
 
 	@Override

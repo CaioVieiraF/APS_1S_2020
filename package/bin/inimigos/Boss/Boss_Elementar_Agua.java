@@ -1,4 +1,4 @@
-package inimigos;
+package inimigos.Boss;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,7 +21,7 @@ public class Boss_Elementar_Agua extends Personagem{
 		setMap(ataques);
 		setAtqs(atqs);
 		ataques.put(atqs[0], "ataque");
-		ataques.put(atqs[1], "devastação_aquática");
+		ataques.put(atqs[1], "devastacao_aquatica");
 		ataques.put(atqs[2], "onda_de_gelo");
 	}
 
@@ -40,14 +40,14 @@ public class Boss_Elementar_Agua extends Personagem{
 
 	}
 
-	public void devastação_aquática  () {
+	public void devastacao_aquatica  () {
 
 		setEstamina(getMana() - 4);
 		setDano(12);
 
 
 	}
-	
+
 	public void onda_de_gelo () {
 
 		setEstamina(getMana() - 8);

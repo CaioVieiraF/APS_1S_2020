@@ -1,4 +1,4 @@
-package inimigos;
+package inimigos.Boss;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,7 +22,7 @@ public class Boss_Elementar_Terra extends Personagem{
 		setAtqs(atqs);
 		ataques.put(atqs[0], "ataque");
 		ataques.put(atqs[1], "terremoto");
-		ataques.put(atqs[2], "sedimentação");
+		ataques.put(atqs[2], "sedimentacao");
 	}
 
 
@@ -47,8 +47,8 @@ public class Boss_Elementar_Terra extends Personagem{
 
 
 	}
-	
-	public void sedimentação () {
+
+	public void sedimentacao () {
 
 		setEstamina(getMana() - 12);
 		setDano(17);

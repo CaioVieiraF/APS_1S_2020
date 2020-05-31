@@ -1,4 +1,4 @@
-package inimigos;
+package inimigos.Boss;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,10 +10,10 @@ public class Boss_Elemental extends Personagem{
 
 	Map<String, String> ataques = new HashMap<>();
 	String[] atqs = {"Ataque comum", "Special atak", "Special two", "Special three", "Special four", "Special five"};
-	String  desc = "Quanto todos os quatro Boss elementares s„o destruÌdos,"
-				 + " um monstro Elemental que possuo as caracterÌsticas de todos os outros È invocado"
-				 + " para destruir todo o planeta ele È o possuidor das forÁas da natureza seus atributos"
-				 + " s„o ·gua, terra, fogo e ar, isso o torna o monstro mais temÌvel de todos. \r\n"
+	String  desc = "Quanto todos os quatro Boss elementares s√£o destru√≠dos,"
+				 + " um monstro Elemental que possuo as caracter√≠sticas de todos os outros √© invocado"
+				 + " para destruir todo o planeta ele √© o possuidor das for√ßas da natureza seus atributos"
+				 + " s√£o √°gua, terra, fogo e ar, isso o torna o monstro mais tem√≠vel de todos. \r\n"
 				 + "Ataques: tempestade de chamas, iceberg, neblina toxica, magma, flechas de ar\r\n";
 	Random rand = new Random();
 
@@ -53,32 +53,32 @@ public class Boss_Elemental extends Personagem{
 		setDano(16);
 
 	}
-	
+
 	public void iceberg () {
 
 		setEstamina(getMana() - 15);
 		setDano(16);
 
 	}
-	
+
 	public void neblina_toxica () {
 
 		setEstamina(getMana() - 8);
 		setDano(12);
 
 	}
-	
+
 	public void magma () {
-		
+
 		setEstamina(getMana() - 10);
 		setDano(14);
-		
+
 	}
 	public void flechas_de_ar () {
-		
+
 		setEstamina(getMana() - 18);
 		setDano(20);
-		
+
 	}
 
 }

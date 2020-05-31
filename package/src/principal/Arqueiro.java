@@ -8,7 +8,7 @@ import Modelos.Personagem;
 public class Arqueiro extends Personagem{
 	
 	Map<String, String> ataques = new HashMap<>();
-	String[] atqs = {"Ataque comum", "Rajada de flechas", "Flecha estelar", "Benção da natureza"};
+	String[] atqs = {"Ataque comum", "Rajada de flechas", "Flecha estelar", "Benï¿½ï¿½o da natureza"};
 
 	public Arqueiro(String nome) {
 		super(nome, 50, 5, 35, 25);

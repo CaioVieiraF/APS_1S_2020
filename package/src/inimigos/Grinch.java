@@ -10,9 +10,9 @@ public class Grinch extends Personagem{
 
 	Map<String, String> ataques = new HashMap<>();
 	String[] atqs = {"Ataque comum", "Special atak"};
-	String desc = "Essa pequena criatura é uma das maiores pestes contra a"
+	String desc = "Essa pequena criatura Ã© uma das maiores pestes contra a"
 				+ " natureza, por onde passa deixa um caos, sempre atirando lixo "
-				+ "nas pessoas e pregando peças.\r\n"
+				+ "nas pessoas e pregando peÃ§as.\r\n"
 				+ "Ataque atirar casca de bananas e jogar lixo.\r\n";
 	Random rand = new Random();
 

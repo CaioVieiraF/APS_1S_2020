@@ -1,4 +1,4 @@
-package inimigos;
+package inimigos.Boss;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Random;
 
 import Modelos.Personagem;
 
-public class Boss_Elementar_Ar extends Personagem{
+public class Boss_Elementar_Terra extends Personagem{
 
 	Map<String, String> ataques = new HashMap<>();
 	String[] atqs = {"Ataque comum", "Special atak", "Special two"};
@@ -14,15 +14,15 @@ public class Boss_Elementar_Ar extends Personagem{
 	Random rand = new Random();
 
 
-	public Boss_Elementar_Ar() {
-		super("Boss aero", 100, 10, 20, 40);
+	public Boss_Elementar_Terra() {
+		super("Boss terrestre", 100, 10, 20, 40);
 
 		setDesc(desc);
 		setMap(ataques);
 		setAtqs(atqs);
 		ataques.put(atqs[0], "ataque");
-		ataques.put(atqs[1], "asas_de_prata");
-		ataques.put(atqs[2], "vendaval");
+		ataques.put(atqs[1], "terremoto");
+		ataques.put(atqs[2], "sedimentacao");
 	}
 
 
@@ -40,18 +40,18 @@ public class Boss_Elementar_Ar extends Personagem{
 
 	}
 
-	public void asas_de_prata () {
+	public void terremoto () {
 
-		setEstamina(getMana() - 10);
-		setDano(16);
+		setEstamina(getMana() - 8);
+		setDano(14);
 
 
 	}
-	
-	public void vendaval () {
 
-		setEstamina(getMana() - 15);
-		setDano(19);
+	public void sedimentacao () {
+
+		setEstamina(getMana() - 12);
+		setDano(17);
 
 
 	}

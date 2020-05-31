@@ -11,8 +11,8 @@ public class Dr_Planeta extends Personagem{
 
 	Map<String, String> ataques = new HashMap<>();
 	String[] atqs = {"Ataque comum", "Special atak"};
-	String   desc = "Um velho cientista que quando jovem havia caído em um posso de lixo"
-				  + " toxico e agora tem as habilidades de controlar matérias orgânicas "
+	String   desc = "Um velho cientista que quando jovem havia caï¿½do em um posso de lixo"
+				  + " toxico e agora tem as habilidades de controlar matï¿½rias orgï¿½nicas "
 				  + "criando monstros.\r\n" 
 				  +"Ataque bola de lixo e horda de lixo.\r\n";
 

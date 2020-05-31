@@ -10,11 +10,11 @@ public class Smog extends Personagem{
 
 	Map<String, String> ataques = new HashMap<>();
 	String[] atqs = {"Ataque comum", "Special atak"};
-	String   desc = "Quando as cidades se enchem de veículos as fabricas e as fabricas queimam seus \n"
-				  + " conteúdos químicos, em meio a esse caos nascem as Smog nuvens altamente toxicas que "
-				  + "destroem o CO2\r\n" 
-				  +"Assim tirando o ar de suas vítimas.\r\n"
-				  +"Ataque chuva de ácido e ar sufocante.\r\n";
+	String   desc = "Quando as cidades se enchem de veÃ­culos as fabricas e as fabricas queimam seus \n"
+				  + " conteÃºdos quÃ­micos, em meio a esse caos nascem as Smog nuvens altamente toxicas que "
+				  + "destroem o CO2\r\n"
+				  +"Assim tirando o ar de suas vÃ­timas.\r\n"
+				  +"Ataque chuva de Ã¡cido e ar sufocante.\r\n";
 	Random rand = new Random();
 
 

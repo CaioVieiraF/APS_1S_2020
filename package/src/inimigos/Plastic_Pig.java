@@ -10,11 +10,11 @@ public class Plastic_Pig extends Personagem{
 
 	Map<String, String> ataques = new HashMap<>();
 	String[] atqs = {"Ataque comum", "Special atak"};
-	String 	 desc = "Um porco que morava próximo a uma fabrica de potes de plástico"
-				  + " e essa mesma fabrica jogava os restos que sobravam dos matérias e "
-				  + "por conta disso o porquinho começou a comer restos de plástico"
-				  + " e se tornou o Plastc pig.\r\n" 
-				  +"Ataques cuspe colante e tiros de plástico.\r\n";
+	String 	 desc = "Um porco que morava prÃ³ximo a uma fabrica de potes de plÃ¡stico"
+				  + " e essa mesma fabrica jogava os restos que sobravam dos materiais e "
+				  + "por conta disso o porquinho comeÃ§ou a comer restos de plÃ¡stico"
+				  + " e se tornou o Plastc pig.\r\n"
+				  +"Ataques cuspe colante e tiros de plÃ¡stico.\r\n";
 	Random rand = new Random();
 
 
